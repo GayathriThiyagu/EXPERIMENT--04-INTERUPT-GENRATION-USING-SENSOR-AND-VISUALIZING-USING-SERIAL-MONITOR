@@ -416,9 +416,9 @@ void assert_failed(uint8_t *file, uint32_t line)
 ![image](https://github.com/user-attachments/assets/b2dec0a9-a85f-4d9a-a982-42051c7c9425)
 
  ## Circuit board :
-<img width="476" height="329" alt="image" src="https://github.com/user-attachments/assets/71737280-0af1-407e-a053-07dc8c29942e" />
+![WhatsApp Image 2025-10-17 at 08 44 10_990ed289](https://github.com/user-attachments/assets/9ca18bb7-e147-42f5-9816-a447b2d75dc9)
 
- <img width="486" height="360" alt="image" src="https://github.com/user-attachments/assets/63be4d74-159a-4a14-98ae-db7a73d499f3" />
+![WhatsApp Image 2025-10-17 at 08 44 20_dcf2c288](https://github.com/user-attachments/assets/5c86959f-57e0-44c2-a49f-0b4e1cbe045b)
 
 ## Result :
 Interfacing a  IR SENSOR and interrupt is generated using external interrupt mode , visualized on serial port.
