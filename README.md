@@ -1,9 +1,8 @@
-###  DATE: 
+###  DATE: 23/09/2025
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
-
+###  NAME: T. Gayathri
+###  ROLL NO :212223100007
+###  DEPARTMENT: CSE (Cyber Security)
 
 # EXPERIMENT--04-INTERUPT-GENRATION-USING-SENSOR-AND-VISUALIZING-USING-SERIAL-MONITOR
 
@@ -13,9 +12,7 @@ To Interface a IR Sensor to digital port of iot development board  and generate 
 ### Components required:
 STM32 CUBE IDE,  serial port utility monitor .
 
-
 ## Theory :
-
 An infrared (IR) sensor a proximity sensor, or a ‘nearness’ sensor senses whether there is an object near it or not. The IR stands for Infrared sensor. Infrared is the light out of our visible spectrum.
 
 Working of an IR Sensor
@@ -38,7 +35,6 @@ Connect GND pin to evive’s GND pin.
 Connect OUT to any gpio and configure that pin as EXTI mode 
 
 ### Interrupts
-
 
 Interrupts are asynchronous (i.e. can happen anytime) events that disrupt the normal flow of your program. This allows the microcontroller to focus on a key task and attend to these events (e.g. pressing a button) as they come without needing to wait for them.
 
@@ -108,25 +104,82 @@ The diagram below shows how the GPIO pins are connected to the 16 interrupt line
 
 ![image](https://user-images.githubusercontent.com/36288975/227599656-dc4a635f-b5f1-44c8-84c5-ee0a592fa184.png)
 
-
 17. check for execution of the output by switching the board to run mode 
 18. click on the serial port utility 
 ![image](https://github.com/vasanthkumarch/EXPERIMENT--04-INTERUPT-GENRATION-USING-SENSOR-AND-VISUALIZING-USING-SERIAL-MONITOR/assets/36288975/cd2c17fc-afac-4d72-97f9-20db3e63f23f)
-19. click on the run to observe the values 
+19. click on the run to observe the values
+    
+## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include "stdio.h"
+#if defined (__ICCARM__) || defined (_ARMCC_VERSION)
+#define PUTCHAR_PROTOTYPE int fputc(int ch,FILE *f);
+#elif defined(__GNUC__)
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#endif
 
+
+
+int main(void)
+{
+  
+  HAL_Init();
 
   
+  SystemClock_Config();
 
-## STM 32 CUBE PROGRAM :
+  
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
+  
+  while (1)
+  {
+
+  }
+  while(1){
+      if(interrupt_triggered){
+          printf("INTERRUPT GENERATED\n");
+          HAL_Delay(100);  // Delay here is safe
+          interrupt_triggered = 0;
+      }
+  }
+  /* USER CODE END 3 */
+}
 
 
+//void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+//	if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_4)==0){
+//		printf("INTERRUPT GENERATED\n");
+//		HAL_Delay(100);
+//	}else{
+//		printf("INTERRUPT NOT GENERATED\n");
+//		HAL_Delay(100);
+//	}
+//}
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+    if(GPIO_Pin == GPIO_PIN_4){
+        if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4) == 0){
+            interrupt_triggered = 1;
+        }
+    }
+}
+
+PUTCHAR_PROTOTYPE {
+	HAL_UART_Transmit(&huart2,(uint8_t*)&ch,1,0xFFFF);
+	return ch;
+}
+
+```
 ## Output screen shots of serial port utility   :
- 
- 
+![image](https://github.com/user-attachments/assets/b2dec0a9-a85f-4d9a-a982-42051c7c9425)
+
  ## Circuit board :
- 
- 
- 
+<img width="476" height="329" alt="image" src="https://github.com/user-attachments/assets/71737280-0af1-407e-a053-07dc8c29942e" />
+
+ <img width="486" height="360" alt="image" src="https://github.com/user-attachments/assets/63be4d74-159a-4a14-98ae-db7a73d499f3" />
+
 ## Result :
-Interfacing a  IR SENSOR and interrupt is generated using external interrupt mode , visualized on serial port 
+Interfacing a  IR SENSOR and interrupt is generated using external interrupt mode , visualized on serial port.
+
