@@ -231,13 +231,13 @@ if(IRSENSOR==0)
 
 {
 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
-printf("INTERRUPT GENERATED\n");
+printf("Obstacle Detected\n");
 HAL_Delay(1000);
 }
 else
 {
 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
-printf("INTERRUPT NOT GENERATED\n");
+printf("Obstacle Not Detected\n");
 HAL_Delay(1000);
 }
 }
@@ -413,7 +413,8 @@ void assert_failed(uint8_t *file, uint32_t line)
 ```
 
 ## Output screen shots of serial port utility   :
-![image](https://github.com/user-attachments/assets/b2dec0a9-a85f-4d9a-a982-42051c7c9425)
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/01dc882f-ee71-42f8-86c8-f282a991a94e" />
+
 
  ## Circuit board :
 ![WhatsApp Image 2025-10-17 at 08 44 10_990ed289](https://github.com/user-attachments/assets/9ca18bb7-e147-42f5-9816-a447b2d75dc9)
